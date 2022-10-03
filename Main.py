@@ -34,8 +34,7 @@ class Main(QDialog):
         self.label_c.setVisible(False)
         self.lineEdit_x.textChanged.connect(lambda text, obj=self.lineEdit_x: self.text_Changed(text))
 
-
-
+    # Метод обработки изменения текста
     def text_Changed(self, text):
         try:
             k = int(text)
@@ -58,20 +57,15 @@ class Main(QDialog):
             x = float(self.lineEdit_x.text())
             if x < 4:
                 c = float(self.lineEdit_c.text())
-                y = pow(x,2)+pow(a,2)*c/(2*b);
+                y = pow(x, 2) + pow(a, 2) * c / (2 * b);
             else:
-                y = pow(x,3)*(a-b);
+                y = pow(x, 3) * (a - b);
             self.label_answer.setText('Ответ: ' + str(format(y, '.2f')))
             self.label_answer.setStyleSheet("border: 1px solid green;")
 
         except:
-            self.label_answer.setText(
-                'Ошибка!')
+            self.label_answer.setText('Ошибка!')
             self.label_answer.setStyleSheet("border: 1px solid red;")
-            # self.lineEdit_a.setStyleSheet("border: 1px solid red;")
-            # self.lineEdit_b.setStyleSheet("border: 1px solid red;")
-            # self.lineEdit_x.setStyleSheet("border: 1px solid red;")
-
 
     # Процедура очистки данных
     def clear(self):
@@ -79,8 +73,6 @@ class Main(QDialog):
         self.lineEdit_b.setText('')
         self.lineEdit_x.setText('')
         self.label_answer.setText('Ответ: ')
-
-
         self.label_answer.setStyleSheet("")
         self.lineEdit_a.setStyleSheet("")
         self.lineEdit_b.setStyleSheet("")
@@ -92,15 +84,13 @@ class Main(QDialog):
         self.colorChange(self.lineEdit_x)
         self.colorChange(self.lineEdit_c)
 
+    # Установка окраски рамки у компонента в зависимости от значения в нем
     def colorChange(self, obj):
-        print(obj.text())
         try:
             int(obj.text())
             obj.setStyleSheet("border: 1px solid green;")
         except:
             obj.setStyleSheet("border: 1px solid red;")
-
-
 
 
 # Основная часть программы
